@@ -6,5 +6,4 @@ class EntryAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
 
 admin.site.register(models.Entry, EntryAdmin)
-
-# Register your models here.
+admin.site.register(models.Comment)

@@ -1,0 +1,11 @@
+<h1>HARO THESE ARE BLOGS!</h1>
+
+{% if latest_blog_list %}
+  <ul>
+    {% for entry in latest_blog_list %}
+      <li><a href="{% url 'blog:detail' entry.id %}">{{ entry.title }}</a></li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No Blogs Yet!</p>
+{% endif %}

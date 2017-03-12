@@ -21,3 +21,9 @@ class Entry(models.Model):
         verbose_name = "Blog Entry"
         verbose_name_plural = "Blog Entries"
         ordering = ["-created"]
+
+class Comment(models.Model):
+    entry = models.ForeignKey(Entry, on_delete=models.CASCADE)
+    author = models.CharField(max_length=200, default="Anonymous")
+    body = models.TextField()
+    created = models.DateTimeField(auto_now_add=True)

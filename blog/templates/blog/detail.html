@@ -1,0 +1,28 @@
+<h1>THIS IS A BLOG!</h1>
+
+<h2> {{ entry.title }} </h2>
+
+<p>{{entry.body}}</p>
+
+<h3>comments</h3>
+{% if error_message %} <p><strong>{{error_message}}</strong></p>{% endif %}
+
+<form id="COMMENTFORM" action="{% url 'blog:new_comment' entry.id %}" method="post">
+{% csrf_token %}
+<input type="text" name="author" value="">
+<textarea name="message" form="COMMENTFORM" rows="8" cols="80"placeholder="Enter message here..."></textarea>
+<input type="submit" value="Comment">
+</form>
+
+{% if comments %}
+  <ul>
+    {% for comment in comments %}
+      <li>
+        <b>{{comment.author}}</b>
+        <p>{{comment.body}}</p>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No Comments Yet!</p>
+{% endif %}
