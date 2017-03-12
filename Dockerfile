@@ -6,4 +6,4 @@ ADD requirements.txt /scripts/
 RUN pip install -r requirements.txt
 ADD . /scripts/
 
-EXPOSE 8000 5432
+EXPOSE 5432
