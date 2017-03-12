@@ -27,3 +27,11 @@ class Comment(models.Model):
     author = models.CharField(max_length=200, default="Anonymous")
     body = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.author + " on " + self.entry.title
+
+    class Meta:
+        verbose_name = "Comment"
+        verbose_name_plural = "Comments"
+        ordering = ["-created"]
