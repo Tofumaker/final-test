@@ -1,0 +1,14 @@
+version : '2'
+
+services:
+  db:
+    image: postgres:latest
+  web:
+    build: .
+    command: bash -c "python manage.py migrate && python manage.py runserver [::]:8000"
+    volumes:
+      - .:/scripts
+    ports:
+      - "8000:8000"
+    links:
+      - db:db
